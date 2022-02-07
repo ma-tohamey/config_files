@@ -41,11 +41,27 @@ terminal = 'alacritty'
 
 keys = [
     # A list of available commands that can be bound to keys can be found
-    # at https://docs.qtile.org/en/latest/manual/config/lazy.html
+    # at https://docs.qtile.otrg/en/latest/manual/config/lazy.html
 
-    # floating windows
+    # testing area
 
+    # Key(
+    #     ['mod4'], 'm',
+    #     lazy.layout.increase_ratio()
+    #     ),
 
+    # floating window
+    Key(
+        [mod, 'shift'], 'x',
+        lazy.window.toggle_floating(),
+        desc = 'Put the focused window to/from floating mode',
+    ),
+
+    Key(
+        [mod], 'm',
+        lazy.window.toggle_minimize(),
+        desc = 'Put the focused window to/from minimize mode',
+    ),
 
     # Switch between windows
     Key(
@@ -200,7 +216,7 @@ keys = [
     #App Bindings
     KeyChord(
         [mod], 'g', [
-            Key([], 'c', lazy.spawn('')),
+            Key([], 'Escape', lazy.spawn('')),
             Key([], 'l', lazy.spawn('dm-tool lock')),
             Key([], 'f', lazy.spawn('firefox')),
             Key([], 'm', lazy.spawn('telegram-desktop')),
@@ -267,14 +283,23 @@ groups.extend([
     ScratchPad("scratchpad", [
         # define a drop down terminal.
         # it is placed in the upper third of screen by default.
-        DropDown("term", "alacritty", opacity=0.8,x=.25,y=0,width=.5),
+        DropDown("term", "alacritty", opacity = 0.8, x = .25, y = 0, width = .5),
     ])
 ])
 
 keys.extend ([
     # toggle visibiliy of above defined DropDown named "term"
-Key([mod,'shift'], 'r',lazy.group['scratchpad'].dropdown_toggle('term')),
+    Key(
+        [mod,'shift'], 'r',
+        lazy.group['scratchpad'].dropdown_toggle('term')),
+        
+    # Key(
+    #     [mod, 'shift'], 'p',
+    #     lazy.group["scratchpad"].hide_all(),
+    # ),
+
 ])
+
 
 
 
@@ -465,7 +490,9 @@ screens = [
                     foreground = ["#ffffff", "#ffffff"],
                 ),
 
-                widget.ThermalSensor(),
+                widget.ThermalSensor(
+                    mouse_callbacks = {'Button3': lazy.spawn('sysmontask')},
+                ),
 
                 widget.TextBox("🌡️"),
 
@@ -476,8 +503,11 @@ screens = [
                 ),
 
                 widget.Volume(
-                    volume_app = 'alsamixer',
-                    emoji = True
+                    volume_app = 'pavucontrol',
+                    emoji = True,
+                    mouse_callbacks = {
+                        'Button3': lazy.spawn('pavucontrol'),
+                        },
                 ),
 
                 widget.KeyboardLayout(
