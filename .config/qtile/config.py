@@ -221,6 +221,7 @@ keys = [
             Key([], 'f', lazy.spawn('firefox')),
             Key([], 'm', lazy.spawn('telegram-desktop')),
             Key([], 't', lazy.spawn('thunar')),
+            Key([], 'r', lazy.spawn('rofi -show drun'))
         ])
             
 
@@ -312,11 +313,12 @@ keys.extend ([
 
 
 ##### DEFAULT THEME SETTINGS FOR LAYOUTS #####
-layout_theme = {"border_width": 5,
+layout_theme = {
+                "border_width": 3,
                 "fullscreen_border_width": 0,
                 "single_border_width": 0,
                 "single_margin": 0,
-                "margin": 5,
+                "margin": 10,
                 "border_focus": "#1693CF",
                 "border_normal": "#1D2330",
                 }    
@@ -452,6 +454,7 @@ screens = [
                 widget.TextBox(
                     fmt = '',
                     fontsize = 25,
+                    mouse_callbacks = {'Button1': lazy.spawn('rofi -show drun')},
                     ),
 
                 widget.TextBox(
@@ -482,6 +485,10 @@ screens = [
 
                 widget.Systray(),
 
+                # widget.CheckUpdates(
+                #     distro = 'Manjaro',
+                # ),
+
                 widget.Pomodoro(),
 
                 widget.Sep(
@@ -500,6 +507,10 @@ screens = [
                     linewidth = 1,
                     padding = 10,
                     foreground = ["#ffffff", "#ffffff"],
+                ),
+
+                widget.Net(
+                    format = '{down} {up}'
                 ),
 
                 widget.Volume(
