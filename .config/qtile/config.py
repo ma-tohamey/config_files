@@ -452,7 +452,7 @@ screens = [
                 # ),
 
                 widget.TextBox(
-                    fmt = '',
+                    fmt = '',
                     fontsize = 25,
                     mouse_callbacks = {'Button1': lazy.spawn('rofi -show drun')},
                     ),
