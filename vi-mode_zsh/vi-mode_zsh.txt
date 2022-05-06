@@ -1,0 +1,2 @@
+first thing to set-up vi-mode with zsh is
+
