@@ -1,6 +1,23 @@
 # Zathura configuration file
 # See man `man zathurarc'
 
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+
+set page-padding 1
+map u scroll half-up
+map d scroll half-down
+map D toggle_page_mode
+map r reload
+map R rotate
+map K zoom in
+map J zoom out
+map i recolor
+map p print
+
+
+
+
 # Open document in fit-width mode by default
 # set adjust-open "best-fit"
 
@@ -14,8 +31,8 @@ set scroll-full-overlap 0.01
 set scroll-step 100
 
 #zoom settings
-set zoom-min 10
-set guioptions ""
+# set zoom-min 10
+# set guioptions ""
 
 # zathurarc-dark
 

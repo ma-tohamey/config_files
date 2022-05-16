@@ -35,7 +35,7 @@ import subprocess
 
 
 
-mod = "mod1"
+mod = 'mod4'
 terminal = 'alacritty'
 
 
@@ -215,7 +215,7 @@ keys = [
 #####################################################
     #App Bindings
     KeyChord(
-        [mod], 'g', [
+        [mod], 'e', [
             Key([], 'Escape', lazy.spawn('')),
             Key([], 'l', lazy.spawn('dm-tool lock')),
             Key([], 'f', lazy.spawn('firefox')),
